@@ -1,0 +1,659 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B17ED6092A66E4BE002F932E /* KeynoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17ED6082A66E4BE002F932E /* KeynoteLogger.swift */; };
+		B1B001392A6535CE0028727E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B001382A6535CE0028727E /* AppDelegate.swift */; };
+		B1B0013B2A6535CE0028727E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0013A2A6535CE0028727E /* SceneDelegate.swift */; };
+		B1B001422A6535D00028727E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1B001412A6535D00028727E /* Assets.xcassets */; };
+		B1B001452A6535D00028727E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1B001432A6535D00028727E /* LaunchScreen.storyboard */; };
+		B1B001502A6535D00028727E /* MyKeynoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0014F2A6535D00028727E /* MyKeynoteTests.swift */; };
+		B1B0015A2A6535D00028727E /* MyKeynoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B001592A6535D00028727E /* MyKeynoteUITests.swift */; };
+		B1B0015C2A6535D00028727E /* MyKeynoteUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0015B2A6535D00028727E /* MyKeynoteUITestsLaunchTests.swift */; };
+		B1B001692A6537390028727E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B001682A6537390028727E /* MainViewController.swift */; };
+		B1B0016E2A65391D0028727E /* BaseSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0016D2A65391D0028727E /* BaseSlide.swift */; };
+		B1B001702A6567BC0028727E /* SlideColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0016F2A6567BC0028727E /* SlideColor.swift */; };
+		B1B001722A6567EB0028727E /* Alpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B001712A6567EB0028727E /* Alpha.swift */; };
+		B1B001742A656CE50028727E /* SlideFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B001732A656CE50028727E /* SlideFactory.swift */; };
+		B1B001762A669FE00028727E /* SlideUUID.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B001752A669FE00028727E /* SlideUUID.swift */; };
+		B1B001782A66A0580028727E /* RandomStringGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B001772A66A0580028727E /* RandomStringGenerator.swift */; };
+		B1B0017A2A66A5FD0028727E /* SquareSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B001792A66A5FD0028727E /* SquareSlide.swift */; };
+		B1B0017C2A66A64E0028727E /* SlideFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0017B2A66A64E0028727E /* SlideFactoryProtocol.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B1B0014C2A6535D00028727E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1B0012D2A6535CE0028727E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1B001342A6535CE0028727E;
+			remoteInfo = MyKeynote;
+		};
+		B1B001562A6535D00028727E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1B0012D2A6535CE0028727E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1B001342A6535CE0028727E;
+			remoteInfo = MyKeynote;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B17ED6082A66E4BE002F932E /* KeynoteLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeynoteLogger.swift; sourceTree = "<group>"; };
+		B1B001352A6535CE0028727E /* MyKeynote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKeynote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1B001382A6535CE0028727E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B1B0013A2A6535CE0028727E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B1B001412A6535D00028727E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B1B001442A6535D00028727E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B1B001462A6535D00028727E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B1B0014B2A6535D00028727E /* MyKeynoteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKeynoteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1B0014F2A6535D00028727E /* MyKeynoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKeynoteTests.swift; sourceTree = "<group>"; };
+		B1B001552A6535D00028727E /* MyKeynoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyKeynoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1B001592A6535D00028727E /* MyKeynoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKeynoteUITests.swift; sourceTree = "<group>"; };
+		B1B0015B2A6535D00028727E /* MyKeynoteUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyKeynoteUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B1B001682A6537390028727E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B1B0016D2A65391D0028727E /* BaseSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSlide.swift; sourceTree = "<group>"; };
+		B1B0016F2A6567BC0028727E /* SlideColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideColor.swift; sourceTree = "<group>"; };
+		B1B001712A6567EB0028727E /* Alpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alpha.swift; sourceTree = "<group>"; };
+		B1B001732A656CE50028727E /* SlideFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideFactory.swift; sourceTree = "<group>"; };
+		B1B001752A669FE00028727E /* SlideUUID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUUID.swift; sourceTree = "<group>"; };
+		B1B001772A66A0580028727E /* RandomStringGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomStringGenerator.swift; sourceTree = "<group>"; };
+		B1B001792A66A5FD0028727E /* SquareSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareSlide.swift; sourceTree = "<group>"; };
+		B1B0017B2A66A64E0028727E /* SlideFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideFactoryProtocol.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B1B001322A6535CE0028727E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1B001482A6535D00028727E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1B001522A6535D00028727E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B1B0012C2A6535CE0028727E = {
+			isa = PBXGroup;
+			children = (
+				B1B001372A6535CE0028727E /* MyKeynote */,
+				B1B0014E2A6535D00028727E /* MyKeynoteTests */,
+				B1B001582A6535D00028727E /* MyKeynoteUITests */,
+				B1B001362A6535CE0028727E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B1B001362A6535CE0028727E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B1B001352A6535CE0028727E /* MyKeynote.app */,
+				B1B0014B2A6535D00028727E /* MyKeynoteTests.xctest */,
+				B1B001552A6535D00028727E /* MyKeynoteUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B1B001372A6535CE0028727E /* MyKeynote */ = {
+			isa = PBXGroup;
+			children = (
+				B1B0016C2A6538340028727E /* Controller */,
+				B1B0016B2A65382C0028727E /* View */,
+				B1B0016A2A6538220028727E /* Model */,
+				B1B001382A6535CE0028727E /* AppDelegate.swift */,
+				B1B0013A2A6535CE0028727E /* SceneDelegate.swift */,
+				B1B001412A6535D00028727E /* Assets.xcassets */,
+				B1B001432A6535D00028727E /* LaunchScreen.storyboard */,
+				B1B001462A6535D00028727E /* Info.plist */,
+			);
+			path = MyKeynote;
+			sourceTree = "<group>";
+		};
+		B1B0014E2A6535D00028727E /* MyKeynoteTests */ = {
+			isa = PBXGroup;
+			children = (
+				B1B0014F2A6535D00028727E /* MyKeynoteTests.swift */,
+			);
+			path = MyKeynoteTests;
+			sourceTree = "<group>";
+		};
+		B1B001582A6535D00028727E /* MyKeynoteUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B1B001592A6535D00028727E /* MyKeynoteUITests.swift */,
+				B1B0015B2A6535D00028727E /* MyKeynoteUITestsLaunchTests.swift */,
+			);
+			path = MyKeynoteUITests;
+			sourceTree = "<group>";
+		};
+		B1B0016A2A6538220028727E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B1B0016D2A65391D0028727E /* BaseSlide.swift */,
+				B1B0016F2A6567BC0028727E /* SlideColor.swift */,
+				B1B001712A6567EB0028727E /* Alpha.swift */,
+				B1B001732A656CE50028727E /* SlideFactory.swift */,
+				B1B001752A669FE00028727E /* SlideUUID.swift */,
+				B1B001772A66A0580028727E /* RandomStringGenerator.swift */,
+				B1B001792A66A5FD0028727E /* SquareSlide.swift */,
+				B1B0017B2A66A64E0028727E /* SlideFactoryProtocol.swift */,
+				B17ED6082A66E4BE002F932E /* KeynoteLogger.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B1B0016B2A65382C0028727E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B1B0016C2A6538340028727E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B1B001682A6537390028727E /* MainViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B1B001342A6535CE0028727E /* MyKeynote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1B0015F2A6535D00028727E /* Build configuration list for PBXNativeTarget "MyKeynote" */;
+			buildPhases = (
+				B1B001312A6535CE0028727E /* Sources */,
+				B1B001322A6535CE0028727E /* Frameworks */,
+				B1B001332A6535CE0028727E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyKeynote;
+			productName = MyKeynote;
+			productReference = B1B001352A6535CE0028727E /* MyKeynote.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B1B0014A2A6535D00028727E /* MyKeynoteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1B001622A6535D00028727E /* Build configuration list for PBXNativeTarget "MyKeynoteTests" */;
+			buildPhases = (
+				B1B001472A6535D00028727E /* Sources */,
+				B1B001482A6535D00028727E /* Frameworks */,
+				B1B001492A6535D00028727E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B1B0014D2A6535D00028727E /* PBXTargetDependency */,
+			);
+			name = MyKeynoteTests;
+			productName = MyKeynoteTests;
+			productReference = B1B0014B2A6535D00028727E /* MyKeynoteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B1B001542A6535D00028727E /* MyKeynoteUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1B001652A6535D00028727E /* Build configuration list for PBXNativeTarget "MyKeynoteUITests" */;
+			buildPhases = (
+				B1B001512A6535D00028727E /* Sources */,
+				B1B001522A6535D00028727E /* Frameworks */,
+				B1B001532A6535D00028727E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B1B001572A6535D00028727E /* PBXTargetDependency */,
+			);
+			name = MyKeynoteUITests;
+			productName = MyKeynoteUITests;
+			productReference = B1B001552A6535D00028727E /* MyKeynoteUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B1B0012D2A6535CE0028727E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					B1B001342A6535CE0028727E = {
+						CreatedOnToolsVersion = 14.3;
+					};
+					B1B0014A2A6535D00028727E = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = B1B001342A6535CE0028727E;
+					};
+					B1B001542A6535D00028727E = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = B1B001342A6535CE0028727E;
+					};
+				};
+			};
+			buildConfigurationList = B1B001302A6535CE0028727E /* Build configuration list for PBXProject "MyKeynote" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B1B0012C2A6535CE0028727E;
+			productRefGroup = B1B001362A6535CE0028727E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B1B001342A6535CE0028727E /* MyKeynote */,
+				B1B0014A2A6535D00028727E /* MyKeynoteTests */,
+				B1B001542A6535D00028727E /* MyKeynoteUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B1B001332A6535CE0028727E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1B001452A6535D00028727E /* LaunchScreen.storyboard in Resources */,
+				B1B001422A6535D00028727E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1B001492A6535D00028727E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1B001532A6535D00028727E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B1B001312A6535CE0028727E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1B001692A6537390028727E /* MainViewController.swift in Sources */,
+				B1B001702A6567BC0028727E /* SlideColor.swift in Sources */,
+				B1B0017A2A66A5FD0028727E /* SquareSlide.swift in Sources */,
+				B1B001762A669FE00028727E /* SlideUUID.swift in Sources */,
+				B1B001722A6567EB0028727E /* Alpha.swift in Sources */,
+				B1B001392A6535CE0028727E /* AppDelegate.swift in Sources */,
+				B1B001782A66A0580028727E /* RandomStringGenerator.swift in Sources */,
+				B1B001742A656CE50028727E /* SlideFactory.swift in Sources */,
+				B1B0017C2A66A64E0028727E /* SlideFactoryProtocol.swift in Sources */,
+				B17ED6092A66E4BE002F932E /* KeynoteLogger.swift in Sources */,
+				B1B0013B2A6535CE0028727E /* SceneDelegate.swift in Sources */,
+				B1B0016E2A65391D0028727E /* BaseSlide.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1B001472A6535D00028727E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1B001502A6535D00028727E /* MyKeynoteTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B1B001512A6535D00028727E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1B0015C2A6535D00028727E /* MyKeynoteUITestsLaunchTests.swift in Sources */,
+				B1B0015A2A6535D00028727E /* MyKeynoteUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B1B0014D2A6535D00028727E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1B001342A6535CE0028727E /* MyKeynote */;
+			targetProxy = B1B0014C2A6535D00028727E /* PBXContainerItemProxy */;
+		};
+		B1B001572A6535D00028727E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1B001342A6535CE0028727E /* MyKeynote */;
+			targetProxy = B1B001562A6535D00028727E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B1B001432A6535D00028727E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B1B001442A6535D00028727E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B1B0015D2A6535D00028727E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B1B0015E2A6535D00028727E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B1B001602A6535D00028727E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 693WY75AQY;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyKeynote/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pastapter.MyKeynote;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		B1B001612A6535D00028727E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 693WY75AQY;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MyKeynote/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pastapter.MyKeynote;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		B1B001632A6535D00028727E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 693WY75AQY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pastapter.MyKeynoteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyKeynote.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyKeynote";
+			};
+			name = Debug;
+		};
+		B1B001642A6535D00028727E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 693WY75AQY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pastapter.MyKeynoteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyKeynote.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyKeynote";
+			};
+			name = Release;
+		};
+		B1B001662A6535D00028727E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 693WY75AQY;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pastapter.MyKeynoteUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MyKeynote;
+			};
+			name = Debug;
+		};
+		B1B001672A6535D00028727E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 693WY75AQY;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pastapter.MyKeynoteUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MyKeynote;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B1B001302A6535CE0028727E /* Build configuration list for PBXProject "MyKeynote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1B0015D2A6535D00028727E /* Debug */,
+				B1B0015E2A6535D00028727E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1B0015F2A6535D00028727E /* Build configuration list for PBXNativeTarget "MyKeynote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1B001602A6535D00028727E /* Debug */,
+				B1B001612A6535D00028727E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1B001622A6535D00028727E /* Build configuration list for PBXNativeTarget "MyKeynoteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1B001632A6535D00028727E /* Debug */,
+				B1B001642A6535D00028727E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1B001652A6535D00028727E /* Build configuration list for PBXNativeTarget "MyKeynoteUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B1B001662A6535D00028727E /* Debug */,
+				B1B001672A6535D00028727E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B1B0012D2A6535CE0028727E /* Project object */;
+}
