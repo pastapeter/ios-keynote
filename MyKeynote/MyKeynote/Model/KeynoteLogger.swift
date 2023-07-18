@@ -19,4 +19,11 @@ struct KeynoteLogger {
     }
   }
   
+  static func log(_ slide: BaseSlide) {
+    if #available(iOS 14.0, *) {
+      let logger = Logger()
+      logger.log("Rect \(slide.description)")
+    }
+  }
+  
 }
