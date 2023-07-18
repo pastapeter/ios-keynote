@@ -9,17 +9,20 @@ import Foundation
 
 enum AspectRatio {
   case ratio4_3
+  case square
   
   var multiplier: Double {
     switch self {
     case .ratio4_3:
       return 3/4
+    case .square:
+      return 1.0
     }
   }
 }
 
 protocol ColorSettable {
-  func setColor(red:Int,blue: Int, green: Int, alpha: Alpha)
+  func setBackgroundColor(red:Int,blue: Int, green: Int, alpha: Alpha)
 }
 
 protocol WidthSettable {
@@ -33,11 +36,13 @@ protocol Typeinitiable {
 class BaseSlide: ColorSettable, WidthSettable, Typeinitiable, CustomStringConvertible {
   
   private var id: SlideUUID
-  private var width: Int
+  private(set) var width: Int
   private var backgroundColor: SlideColor
-  private var aspectRatio: AspectRatio = .ratio4_3
+  var aspectRatio: AspectRatio {
+    return .ratio4_3
+  }
   
-  final var height: Int {
+  var height: Int {
     return Int(Double(width) * aspectRatio.multiplier)
   }
   
@@ -47,7 +52,7 @@ class BaseSlide: ColorSettable, WidthSettable, Typeinitiable, CustomStringConver
     self.backgroundColor = backgroundColor
   }
   
-  func setColor(red: Int, blue: Int, green: Int, alpha: Alpha) {
+  func setBackgroundColor(red: Int, blue: Int, green: Int, alpha: Alpha) {
     self.backgroundColor = SlideColor(R: UInt8(red), G: UInt8(green), B: UInt8(blue), A: alpha)
   }
   

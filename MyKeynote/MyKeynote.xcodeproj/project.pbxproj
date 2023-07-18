@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B17ED6092A66E4BE002F932E /* KeynoteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17ED6082A66E4BE002F932E /* KeynoteLogger.swift */; };
+		B17ED60D2A66EFB3002F932E /* RectangleSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17ED60C2A66EFB3002F932E /* RectangleSlide.swift */; };
 		B1B001392A6535CE0028727E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B001382A6535CE0028727E /* AppDelegate.swift */; };
 		B1B0013B2A6535CE0028727E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B0013A2A6535CE0028727E /* SceneDelegate.swift */; };
 		B1B001422A6535D00028727E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1B001412A6535D00028727E /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		B17ED6082A66E4BE002F932E /* KeynoteLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeynoteLogger.swift; sourceTree = "<group>"; };
+		B17ED60C2A66EFB3002F932E /* RectangleSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleSlide.swift; sourceTree = "<group>"; };
 		B1B001352A6535CE0028727E /* MyKeynote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyKeynote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1B001382A6535CE0028727E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1B0013A2A6535CE0028727E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				B1B001792A66A5FD0028727E /* SquareSlide.swift */,
 				B1B0017B2A66A64E0028727E /* SlideFactoryProtocol.swift */,
 				B17ED6082A66E4BE002F932E /* KeynoteLogger.swift */,
+				B17ED60C2A66EFB3002F932E /* RectangleSlide.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				B1B0017C2A66A64E0028727E /* SlideFactoryProtocol.swift in Sources */,
 				B17ED6092A66E4BE002F932E /* KeynoteLogger.swift in Sources */,
 				B1B0013B2A6535CE0028727E /* SceneDelegate.swift in Sources */,
+				B17ED60D2A66EFB3002F932E /* RectangleSlide.swift in Sources */,
 				B1B0016E2A65391D0028727E /* BaseSlide.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
