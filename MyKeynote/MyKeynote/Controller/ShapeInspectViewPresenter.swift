@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShapeInspectorViewPresenter: NSObject, ShapeDatasource, UITableViewDataSource {
+class ShapeInspectorViewPresenter: NSObject, UITableViewDataSource {
   
   private var inspectViewFactory = InspectViewFactory()
   private var inspectViews: [any InspectViewable]
@@ -39,18 +39,6 @@ class ShapeInspectorViewPresenter: NSObject, ShapeDatasource, UITableViewDataSou
     cellContentView.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100)
     return cell
     
-  }
-  
-  func shapeInspectViewTitle(_ inspectView: ShapeInspectView) -> String? {
-    return "Hello World"
-  }
-  
-  func shapeInspectViewSection(_ inspectView: ShapeInspectView, numberOfRowsInSection section: Int) -> Int {
-    return 1
-  }
-  
-  func numberOfSection(in inspectView: Int) -> Int {
-    return 1
   }
   
 }
