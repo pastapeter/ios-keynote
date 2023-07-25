@@ -26,4 +26,11 @@ struct KeynoteLogger {
     }
   }
   
+  static func log(_ message: String) {
+    if #available(iOS 14.0, *) {
+      let logger = Logger()
+      logger.log("\(message)")
+    }
+  }
+  
 }
