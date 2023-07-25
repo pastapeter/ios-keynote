@@ -18,7 +18,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       let window = UIWindow(windowScene: windowScene)
       window.overrideUserInterfaceStyle = UIUserInterfaceStyle.light
       
-      window.rootViewController = MainViewController()
+      let inspectViewController = InspectorViewController()
+      let navigatorViewController = NavigatorViewController()
+      let presentingViewController = PresentingViewController()
+      let keynoteSplitViewController = KeynoteContainerViewController(navigatorViewController: navigatorViewController, presentationViewController: presentingViewController, inspectViewController: inspectViewController)
+      window.rootViewController = keynoteSplitViewController
+      
       window.makeKeyAndVisible()
       self.window = window
     }
