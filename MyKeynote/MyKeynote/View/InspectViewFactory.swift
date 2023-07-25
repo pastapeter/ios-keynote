@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class InspectViewFactory {
+protocol InspectViewFactoryProtocol {
+  func createInspectViews<Inspector: ComponentInspectable>(with inspector: Inspector) -> [any InspectViewable]
+}
+
+final class InspectViewFactory: InspectViewFactoryProtocol {
   
   func createInspectViews<Inspector: ComponentInspectable>(with inspector: Inspector) -> [any InspectViewable] {
     

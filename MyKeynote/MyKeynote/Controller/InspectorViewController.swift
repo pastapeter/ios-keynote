@@ -31,6 +31,7 @@ class InspectorViewController: UIViewController {
     self.view = shapeInspectView
     shapeInspectView.dataSource = self.shapeInspectViewPresenter
     shapeInspectView.delegate = self
+    shapeInspectViewPresenter?.setupViewDelegate()
     shapeInspectView.reloadData()
   }
   

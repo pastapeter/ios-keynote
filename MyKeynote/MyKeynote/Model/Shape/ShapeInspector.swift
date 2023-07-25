@@ -7,12 +7,18 @@
 
 import Foundation
 
-protocol ComponentInspectable: AnyObject {
-  func setBackgroundColor(red: UInt8, blue: UInt8, green: UInt8)
-  func setAlpha(to alpha: Alpha)
+protocol ComponentInspectable: ColorSettable, AlphaSettable, AnyObject {
 }
 
 class ShapeInspector: ComponentInspectable {
+  
+  func setBackgroundColor(red: UInt8, blue: UInt8, green: UInt8, alpha: Alpha) {
+    shape.setBackgroundColor(red: red, blue: blue, green: green, alpha: alpha)
+  }
+  
+  func setBackgroundAlpha(alpha: Alpha) {
+    shape.setBackgroundAlpha(alpha: alpha)
+  }
   
   func setBackgroundColor(red: UInt8, blue: UInt8, green: UInt8) {
     shape.setBackgroundColor(red: red, blue: blue, green: green)

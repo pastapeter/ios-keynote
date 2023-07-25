@@ -27,8 +27,10 @@ class ColorSettingView: UIView, InspectViewable {
   }
   
   func setDelegate(with delegate: some ComponentInspectable) {
-    guard let delegate = delegate as? ColorSettable else { return }
-    self.delegate = delegate
+    
+    guard let colorDelegate = delegate as? ColorSettable else { return }
+    
+    self.delegate = colorDelegate
   }
   
   required init?(coder: NSCoder) {
@@ -51,7 +53,10 @@ extension ColorSettingView {
   
   @objc
   private func didTouchColorChange(_ sender: UIButton) {
-    self.delegate?.setBackgroundColor(red: 1, blue: 1, green: 1)
+    let picker = UIColorPickerViewController()
+    picker.supportsAlpha = false
+    self.findViewController()?.present(picker, animated: true)
+    picker.delegate = self
   }
   
   private func setbackgroundColor() {
@@ -80,4 +85,20 @@ extension ColorSettingView {
 
   }
   
+}
+
+extension ColorSettingView: UIColorPickerViewControllerDelegate {
+  
+  func colorPickerViewController(_ viewController: UIColorPickerViewController, didSelect color: UIColor, continuously: Bool) {
+    guard let keynoteColor = color.toKeynoteColor() else { return }
+    self.delegate?.setBackgroundColor(red: keynoteColor.R, blue: keynoteColor.B, green: keynoteColor.G)
+  }
+  
+}
+
+fileprivate extension UIColor {
+  func toKeynoteColor() -> KeynoteColor? {
+    guard let rgb = self.cgColor.components else { return nil }
+    return KeynoteColor(R: UInt8(ceil(rgb[0] * 255)), G: UInt8(ceil(rgb[0] * 255)), B: UInt8(ceil(rgb[0] * 255)))
+  }
 }

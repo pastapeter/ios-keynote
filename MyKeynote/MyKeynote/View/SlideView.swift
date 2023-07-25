@@ -18,6 +18,7 @@ final class SlideView: UIView, ComponentEventDelegate {
       let view = ShapeView(frame: CGRect(x: Int($0.origin.x), y: Int($0.origin.y), width: 50, height: 50), uuid: $0.id)
       view.backgroundColor = .red
       view.delegate = self
+      self.shapeviews[$0.id] = view
       return view
     }
     shapeViews.forEach { self.addSubview($0) }
