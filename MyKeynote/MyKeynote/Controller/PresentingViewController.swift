@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PresentingOutputDelegate: AnyObject {
-  func output(didSelectFromSlideView shape: Shape)
+  func output(didSelectFromSlideView uuid: keynoteUUID)
   func didTouchOnSlideView()
 }
 
@@ -50,7 +50,7 @@ extension PresentingViewController {
  
   private func reloadSlideView() {
     guard let datasource = navigateDatasource, let slideInfo = datasource.selectedSlideInfo() else { return }
-    slideView.setslideInfo(info: slideInfo)
+    slideView.setslideShape(with: slideInfo.shapes.map { $0.shape })
     slideView.delegate = self
   }
   
@@ -63,8 +63,8 @@ extension PresentingViewController: ComponentEventDelegate {
   }
   
   
-  func didTouch(with shape: Shape) {
-    self.outputDelegate?.output(didSelectFromSlideView: shape)
+  func didTouch(with uuid: keynoteUUID) {
+    self.outputDelegate?.output(didSelectFromSlideView: uuid)
   }
   
 }

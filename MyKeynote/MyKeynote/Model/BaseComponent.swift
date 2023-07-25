@@ -21,7 +21,7 @@ class BaseComponent: ColorSettable, AlphaSettable, WidthSettable, HeightSettable
     hasher.combine(id)
   }
   
-  private var id: keynoteUUID
+  private(set) var id: keynoteUUID
   private(set) var width: Int
   private(set) var backgroundColor: KeynoteColor
   private(set) var height: Int = 0

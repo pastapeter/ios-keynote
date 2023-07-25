@@ -9,13 +9,13 @@ import UIKit
 
 final class SlideView: UIView, ComponentEventDelegate {
   
-  private var shapes: [Shape] = []
   weak var delegate: ComponentEventDelegate?
+  private var shapeviews: [keynoteUUID: ShapeView] = [:]
   
-  func setslideInfo(info: BaseSlide) {
-    shapes = info.shapes.map { $0.shape }
+  func setslideShape(with shapes: [Shape]) {
+
     let shapeViews = shapes.map {
-      let view = ShapeView(frame: CGRect(x: Int($0.origin.x), y: Int($0.origin.y), width: 50, height: 50), shape: $0)
+      let view = ShapeView(frame: CGRect(x: Int($0.origin.x), y: Int($0.origin.y), width: 50, height: 50), uuid: $0.id)
       view.backgroundColor = .red
       view.delegate = self
       return view
@@ -46,8 +46,8 @@ final class SlideView: UIView, ComponentEventDelegate {
     delegate?.didTouchSlide()
   }
   
-  func didTouch(with shape: Shape) {
-    delegate?.didTouch(with: shape)
+  func didTouch(with uuid: keynoteUUID) {
+    delegate?.didTouch(with: uuid)
   }
   
   

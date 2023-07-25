@@ -17,23 +17,23 @@ protocol ViewMovable: UIView {
 
 class ShapeView: UIView, ViewSelectable, ViewMovable {
   
-  private var shape: Shape
   weak var delegate: ComponentEventDelegate?
+  private var uuid: keynoteUUID
   
-  init(frame: CGRect, shape: Shape) {
-    self.shape = shape
+  init(frame: CGRect, uuid: keynoteUUID) {
+    self.uuid = uuid
     super.init(frame: frame)
     setTapGesture()
   }
   
-  required init?(coder: NSCoder, shape: Shape) {
-    self.shape = shape
+  required init?(coder: NSCoder, uuid: keynoteUUID) {
+    self.uuid = uuid
     super.init(coder: coder)
     setTapGesture()
   }
   
   required init?(coder: NSCoder) {
-    self.shape = ShapeInfoFactory.createShapeInfo(type: Square.self).shape
+    self.uuid = keynoteUUID()
     super.init(coder: coder)
     setTapGesture()
   }
@@ -43,7 +43,7 @@ class ShapeView: UIView, ViewSelectable, ViewMovable {
   }
   
   func didTouched() {
-    delegate?.didTouch(with: self.shape)
+    delegate?.didTouch(with: self.uuid)
   }
   
   private func setTapGesture() {
@@ -76,18 +76,14 @@ class SquareView: RectView {
 }
 
 protocol ComponentEventDelegate: AnyObject {
-  func didTouch(with shape: Shape)
+  func didTouch(with uuid: keynoteUUID)
   func didTouchSlide()
 }
 
 extension ComponentEventDelegate {
   
-  func didTouch(with shape: Shape) {
-    
-  }
+  func didTouch(with uuid: keynoteUUID) { }
   
-  func didTouchSlide() {
-    
-  }
+  func didTouchSlide() { }
   
 }

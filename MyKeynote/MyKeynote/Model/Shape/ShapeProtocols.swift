@@ -11,13 +11,9 @@ protocol ShapeInitable {
   init(id: keynoteUUID, width: Int, height: Int, backgroundColor: KeynoteColor, origin: (x: Double, y: Double))
 }
 
-protocol Selectable {
-  var isSelected: Bool { get set }
-}
-
-protocol Movable: Selectable {
+protocol Movable {
   func move(x: Double, y: Double)
 }
 
-protocol ShapeProtocol: ShapeInitable, Selectable, Movable { }
+protocol ShapeProtocol: ShapeInitable, Movable { }
 

@@ -40,24 +40,18 @@ final class KeynoteContainerViewController: KeynoteSplitViewController {
 
 extension KeynoteContainerViewController: PresentingOutputDelegate {
   
-  func output(didSelectFromSlideView shape: Shape) {
+  func output(didSelectFromSlideView uuid: keynoteUUID) {
     
-    self.navigateDatasource?.selectedSlideInfo()?.shapes.forEach { $0.shape.isSelected = false }
-    
-    shape.isSelected = true
-    
-    guard let selectedInspector = self.navigateDatasource?.selectedSlideInfo()?.shapes.first(where: { $0.shape == shape })?.inspector else { return }
+    guard let selectedInspector = self.navigateDatasource?.selectedSlideInfo()?.find(uuid)?.inspector else { return }
     guard let inspectorVC = viewControllers[.right] as? InspectorViewController else { return }
     inspectorVC.reloadInspector(with: selectedInspector)
     
   }
   
   func didTouchOnSlideView() {
-    self.navigateDatasource?.selectedSlideInfo()?.shapes.forEach { $0.shape.isSelected = false }
-    
     guard let inspectorVC = viewControllers[.right] as? InspectorViewController else { return }
     guard let selectedSlide = self.navigateDatasource?.selectedSlideInfo() else { return }
-    inspectorVC.reloadInspector(with: selectedSlide)
+    inspectorVC.reloadInspector(with: selectedSlide) //TYPE: BaseSlide
   }
   
 }

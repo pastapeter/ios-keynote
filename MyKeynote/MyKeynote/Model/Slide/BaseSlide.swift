@@ -24,7 +24,6 @@ enum AspectRatio {
 
 class BaseSlide: BaseComponent, SlideInitable, ShapeStorable, ComponentInspectable {
   
-
   var aspectRatio: AspectRatio {
     return .ratio4_3
   }
@@ -54,6 +53,10 @@ class BaseSlide: BaseComponent, SlideInitable, ShapeStorable, ComponentInspectab
 }
 
 extension BaseSlide {
+  
+  func find(_ uuid: keynoteUUID) -> ShapeInfo? {
+    return self.shapes.first(where: { $0.shape.id == uuid })
+  }
   
   func addShape(_ shape: ShapeInfo) {
     self.shapes.append(shape)

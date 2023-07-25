@@ -25,6 +25,7 @@ protocol SlideInitable {
 }
 
 protocol ShapeStorable {
+  func find(_ uuid: keynoteUUID) -> ShapeInfo?
   func addShape(_ shape: ShapeInfo)
   func insertShape(_ shape: ShapeInfo, at index: Int)
   func brintShapeToFront(_ shape: ShapeInfo)

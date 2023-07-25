@@ -8,8 +8,7 @@
 import Foundation
 
 class Shape: BaseComponent, ShapeProtocol {
-  
-  var isSelected: Bool = true
+
   private(set) var origin: (x: Double, y: Double) = (x:0, y:0)
   
   required init(id: keynoteUUID, width: Int, height: Int, backgroundColor: KeynoteColor, origin: (x: Double, y: Double)) {
