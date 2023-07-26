@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SlideViewDatasource: AnyObject {
+protocol ShapeViewStorableDatasource: AnyObject {
   func numberOfShapeView() -> Int
   func slideView(_ slideView: SlideView, ShapeViewIndexAt index: Int) -> ShapeView
   func slideView(_ slideView: SlideView, editByUUID uuid: keynoteUUID, shape: Shape)
@@ -16,7 +16,7 @@ protocol SlideViewDatasource: AnyObject {
 final class SlideView: UIView, ComponentEventDelegate {
   
   weak var delegate: ComponentEventDelegate?
-  weak var datasource: SlideViewDatasource?
+  weak var datasource: ShapeViewStorableDatasource?
   private var shapeviews: [keynoteUUID: ShapeView] = [:]
   
   func reloadsubView(with uuid: keynoteUUID, by shape: Shape) {
@@ -69,6 +69,7 @@ extension SlideView {
   
   @objc
   private func handleTapOnSlide(sender: UITapGestureRecognizer) {
+    shapeviews.values.forEach { $0.toggleSelect() }
     delegate?.didTouchSlide()
   }
   

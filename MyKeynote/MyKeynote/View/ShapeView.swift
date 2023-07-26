@@ -19,6 +19,16 @@ class ShapeView: UIView, ViewSelectable, ViewMovable {
   
   weak var delegate: ComponentEventDelegate?
   private var uuid: keynoteUUID
+  private var isSelected: Bool = false {
+    didSet {
+      if isSelected {
+        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.borderWidth = 2
+      } else {
+        self.layer.borderWidth = 0
+      }
+    }
+  }
   
   init(frame: CGRect, uuid: keynoteUUID) {
     self.uuid = uuid
@@ -38,7 +48,9 @@ class ShapeView: UIView, ViewSelectable, ViewMovable {
     setTapGesture()
   }
   
+  // 귀찮아도 하자
   func updateview(by shape: Shape) {
+    // Shape -> 위에서 바꿔라
     self.backgroundColor = UIColor(from: shape.backgroundColor)
     self.frame.origin = CGPoint(x: shape.origin.x, y: shape.origin.y)
     self.frame = CGRect(origin: self.frame.origin, size: CGSize(width: shape.width, height: shape.height))
@@ -50,6 +62,11 @@ class ShapeView: UIView, ViewSelectable, ViewMovable {
   
   func didTouched() {
     delegate?.didTouch(with: self.uuid)
+    toggleSelect()
+  }
+  
+  func toggleSelect() {
+    isSelected = !isSelected
   }
   
 }
