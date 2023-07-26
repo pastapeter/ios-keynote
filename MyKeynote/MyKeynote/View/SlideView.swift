@@ -27,7 +27,7 @@ final class SlideView: UIView, ComponentEventDelegate {
   func reloadData() {
     self.subviews.forEach { $0.removeFromSuperview() }
     guard let datasource = datasource else { return }
-    var numberOfShapes = datasource.numberOfShapeView()
+    let numberOfShapes = datasource.numberOfShapeView()
     for i in (0..<numberOfShapes) {
       let shapeView = datasource.slideView(self, ShapeViewIndexAt: i)
       self.addSubview(shapeView)
