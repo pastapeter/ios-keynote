@@ -11,7 +11,7 @@ protocol HeightSettable {
   func setHeight(to length: Int)
 }
 
-class BaseComponent: ColorSettable, AlphaSettable, WidthSettable, HeightSettable, Hashable, CustomStringConvertible {
+class BaseComponent: ComponentInspectable, WidthSettable, HeightSettable, Hashable, CustomStringConvertible {
   
   static func == (lhs: BaseComponent, rhs: BaseComponent) -> Bool {
     lhs.id == rhs.id
