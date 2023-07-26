@@ -9,7 +9,7 @@ import UIKit
 
 class ShapeInspectorViewPresenter: NSObject, UITableViewDataSource {
   
-  private var inspectViewFactory = InspectViewFactory()
+  private var inspectViewFactory: InspectViewFactoryProtocol = InspectViewFactory()
   private var inspectViews: [any InspectViewable]
   private var inspector: ComponentInspectable
   

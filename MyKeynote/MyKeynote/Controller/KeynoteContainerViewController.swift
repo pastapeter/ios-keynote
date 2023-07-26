@@ -16,11 +16,28 @@ final class KeynoteContainerViewController: KeynoteSplitViewController {
     }
   }
   
+  override init(navigatorViewController: UIViewController?, presentationViewController: UIViewController, inspectViewController: UIViewController?) {
+    super.init(navigatorViewController: navigatorViewController, presentationViewController: presentationViewController, inspectViewController: inspectViewController)
+    addObserverForSlideChange()
+    guard let navigatorVC = navigatorViewController as? NavigatorViewController else { return }
+    currentSlide = navigatorVC.getFirstSlide()
+    
+  }
+  
+  required init?(coder: NSCoder) {
+    super.init(coder: coder)
+    addObserverForSlideChange()
+  }
+  
+  required init?(coder: NSCoder, navigatorViewController: UIViewController?, presentationViewController: UIViewController, inspectViewController: UIViewController?) {
+    super.init(coder: coder, navigatorViewController: navigatorViewController, presentationViewController: presentationViewController, inspectViewController: inspectViewController)
+    addObserverForSlideChange()
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     parseShapesInCurrentSlideToPresentingViewController()
     parseCurrentSlideToInspectorViewController()
-    addObserverForSlideChange()
   }
   
 }

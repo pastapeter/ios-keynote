@@ -28,6 +28,7 @@ class PresentingViewController: UIViewController {
     self.view.backgroundColor = .systemGray2
     setupSlideView()
     addObservers()
+    slideView.delegate = self
     slideView.datasource = self
   }
   
@@ -37,10 +38,11 @@ class PresentingViewController: UIViewController {
   
   @objc
   func didReceiveNotification(_ notification: Notification) {
-    if notification.name == NotificationCenterConstant.Slide.name {
+    if notification.name == NotificationCenterConstant.SlideChange.name {
       reloadData()
-    } else {
-      reloadShapeData(with: notification.userInfo?["UUID"] as? keynoteUUID, shape: notification.userInfo?["Shape"] as? Shape)
+    } else if notification.name == NotificationCenterConstant.Shape.name {
+      guard let uuid = notification.userInfo?["UUID"] as? keynoteUUID, let shape = notification.userInfo?["Shape"] as? Shape else { return }
+      slideView(slideView, editByUUID: uuid, shape: shape)
     }
     
   }
@@ -49,14 +51,6 @@ class PresentingViewController: UIViewController {
     reloadSlideView()
   }
   
-  func reloadShapeData(with uuid: keynoteUUID?, shape: Shape?) {
-    guard let uuid = uuid, let shape = shape else { return }
-    guard let datasource = navigateDatasource, let slideInfo = datasource.selectedSlideInfo() else { return }
-    //음 근데..? 만약에 Image가 들어오면? 무슨 Shape인지 파악가능함?
-    //그러면 구체타입으로 전달하나?
-    //각 뷰에서 타입캐스팅해서 쓰는게 어떰?
-    slideView.reloadsubView(with: uuid, by: shape)
-  }
     
 }
 
@@ -79,6 +73,8 @@ extension PresentingViewController {
   
 }
 
+// MARK: - ComponentEventDelegate
+
 extension PresentingViewController: ComponentEventDelegate {
   
   func didTouchSlide() {
@@ -92,20 +88,19 @@ extension PresentingViewController: ComponentEventDelegate {
   
 }
 
+// MARK: - SlideDataSource
 extension PresentingViewController: SlideViewDatasource {
   
   func numberOfShapeView() -> Int {
-    return navigateDatasource?.selectedSlideInfo()?.shapes.count ?? 0
+    return currentShapes.count
   }
   
   func slideView(_ slideView: SlideView, ShapeViewIndexAt index: Int) -> ShapeView {
-    guard let datasource = navigateDatasource, let slideInfo = datasource.selectedSlideInfo() else { return ShapeView(frame: .zero, uuid: keynoteUUID())}
-    let shapes = slideInfo.shapes.map { $0.shape }
-    return slideView.makeShapeView(with: shapes[index])
+    return slideView.makeShapeView(with: currentShapes[index])
   }
   
-  func slideView(_ slideView: SlideView, editByUUID uuid: keynoteUUID) {
-    
+  func slideView(_ slideView: SlideView, editByUUID uuid: keynoteUUID, shape: Shape) {
+    slideView.reloadsubView(with: uuid, by: shape)
   }
   
 }

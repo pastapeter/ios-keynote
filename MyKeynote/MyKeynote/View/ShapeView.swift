@@ -38,6 +38,12 @@ class ShapeView: UIView, ViewSelectable, ViewMovable {
     setTapGesture()
   }
   
+  func updateview(by shape: Shape) {
+    self.backgroundColor = UIColor(from: shape.backgroundColor)
+    self.frame.origin = CGPoint(x: shape.origin.x, y: shape.origin.y)
+    self.frame = CGRect(origin: self.frame.origin, size: CGSize(width: shape.width, height: shape.height))
+  }
+  
   func didMove() {
     return
   }
@@ -46,44 +52,18 @@ class ShapeView: UIView, ViewSelectable, ViewMovable {
     delegate?.didTouch(with: self.uuid)
   }
   
+}
+
+extension ShapeView {
+  
   private func setTapGesture() {
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:)))
     self.addGestureRecognizer(tapGesture)
   }
   
   @objc
-  func handleTap(sender: UITapGestureRecognizer) {
+  private func handleTap(sender: UITapGestureRecognizer) {
     didTouched()
   }
-  
-    
-}
-
-class TriangleView: ShapeView {
-  
-  override func draw(_ rect: CGRect) {
-    return
-  }
-  
-}
-
-class RectView: ShapeView {
-  
-}
-
-class SquareView: RectView {
-  
-}
-
-protocol ComponentEventDelegate: AnyObject {
-  func didTouch(with uuid: keynoteUUID)
-  func didTouchSlide()
-}
-
-extension ComponentEventDelegate {
-  
-  func didTouch(with uuid: keynoteUUID) { }
-  
-  func didTouchSlide() { }
   
 }

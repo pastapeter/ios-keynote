@@ -7,22 +7,31 @@
 
 import UIKit
 
+protocol SlideViewDatasource: AnyObject {
+  func numberOfShapeView() -> Int
+  func slideView(_ slideView: SlideView, ShapeViewIndexAt index: Int) -> ShapeView
+  func slideView(_ slideView: SlideView, editByUUID uuid: keynoteUUID, shape: Shape)
+}
+
 final class SlideView: UIView, ComponentEventDelegate {
   
   weak var delegate: ComponentEventDelegate?
+  weak var datasource: SlideViewDatasource?
   private var shapeviews: [keynoteUUID: ShapeView] = [:]
   
-  func setslideShape(with shapes: [Shape]) {
-
-    let shapeViews = shapes.map {
-      let view = ShapeView(frame: CGRect(x: Int($0.origin.x), y: Int($0.origin.y), width: 50, height: 50), uuid: $0.id)
-      view.backgroundColor = .red
-      view.delegate = self
-      self.shapeviews[$0.id] = view
-      return view
+  func reloadsubView(with uuid: keynoteUUID, by shape: Shape) {
+    guard let shapeview = shapeviews[uuid] else { return }
+    shapeview.updateview(by: shape)
+  }
+  
+  func reloadData() {
+    self.subviews.forEach { $0.removeFromSuperview() }
+    guard let datasource = datasource else { return }
+    var numberOfShapes = datasource.numberOfShapeView()
+    for i in (0..<numberOfShapes) {
+      let shapeView = datasource.slideView(self, ShapeViewIndexAt: i)
+      self.addSubview(shapeView)
     }
-    shapeViews.forEach { self.addSubview($0) }
-    layoutIfNeeded()
   }
 
   override init(frame: CGRect) {
@@ -37,19 +46,31 @@ final class SlideView: UIView, ComponentEventDelegate {
     setTapGestureToSelf()
   }
   
+  func didTouch(with uuid: keynoteUUID) {
+    delegate?.didTouch(with: uuid)
+  }
+  
+}
+
+extension SlideView {
+  
+  func makeShapeView(with shape: Shape) -> ShapeView {
+    let shapeView = ShapeView(frame: CGRect(x: Int(shape.origin.x), y: Int(shape.origin.y), width: shape.width, height: shape.height), uuid: shape.id)
+//    shapeView.backgroundColor = UIColor(from: shape.backgroundColor)
+    shapeView.backgroundColor = .red
+    shapeView.delegate = self
+    shapeviews.updateValue(shapeView, forKey: shape.id)
+    return shapeView
+  }
+  
   private func setTapGestureToSelf() {
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapOnSlide(sender:)))
     self.addGestureRecognizer(tapGesture)
   }
   
   @objc
-  func handleTapOnSlide(sender: UITapGestureRecognizer) {
+  private func handleTapOnSlide(sender: UITapGestureRecognizer) {
     delegate?.didTouchSlide()
   }
-  
-  func didTouch(with uuid: keynoteUUID) {
-    delegate?.didTouch(with: uuid)
-  }
-  
   
 }

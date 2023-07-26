@@ -7,11 +7,7 @@
 
 import UIKit
 
-protocol NavigatorDataSource: AnyObject {
-  func selectedSlideInfo() -> BaseSlide?
-}
-
-class NavigatorViewController: UIViewController, NavigatorDataSource  {
+class NavigatorViewController: UIViewController {
   
   private var slideManager: SlideManageable
   
@@ -39,16 +35,15 @@ class NavigatorViewController: UIViewController, NavigatorDataSource  {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.backgroundColor = .systemGray4
+    getCurrentSlide()
   }
-
   
-}
-
-
-extension NavigatorViewController {
+  func getCurrentSlide() {
+    let currentSlide = slideManager[0]
+  }
   
-  func selectedSlideInfo() -> BaseSlide? {
+  func getFirstSlide() -> BaseSlide? {
     return slideManager[0]
   }
-  
+
 }
