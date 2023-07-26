@@ -9,8 +9,8 @@ import Foundation
 
 final class ShapeFactory {
   
-  let maxWidth = 1200
-  let maxHeight = 900
+  let maxWidth = 300
+  let maxHeight = 300
 
   func makeShape(type: Shape.Type) -> some Shape {
     return type.init(id: keynoteUUID(), width: Int.random(in: 0..<maxWidth), height: Int.random(in: 0..<maxHeight), backgroundColor: KeynoteColor.random(), origin: (x: 0, y: 0))

@@ -10,7 +10,7 @@ import Foundation
 protocol SlideFactoryProtocol {
   func makeSlide<Slide: BaseSlide, G: RandomNumberGenerator>(type: Slide.Type, using generator: inout G) -> Slide
   func makeSlide<Slide: BaseSlide>(type: Slide.Type) -> Slide
-  func makeSlideWithSquare<Slide: BaseSlide>(slide: Slide.Type) -> Slide
+  func makeSlide<Slide: BaseSlide>(slide: Slide.Type, shapeFactory: ShapeInfoFactoryProtocol) -> Slide
 }
 
 

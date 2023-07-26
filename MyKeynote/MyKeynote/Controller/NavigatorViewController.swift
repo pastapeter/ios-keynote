@@ -17,7 +17,7 @@ class NavigatorViewController: UIViewController {
   }
   
   convenience init() {
-    var slideManager = SlideManager(slides: [], slideFactory: BaseSlideFactory())
+    var slideManager = SlideManager(slides: [], slideFactory: BaseSlideFactory(), shapeInfoFactory: ShapeInfoFactory())
     slideManager.createSlide(of:BaseSlide.self)
     self.init(slideManager: slideManager)
   }
@@ -28,7 +28,7 @@ class NavigatorViewController: UIViewController {
   }
   
   required convenience init?(coder: NSCoder) {
-    let slideManager = SlideManager(slides: [], slideFactory: BaseSlideFactory())
+    let slideManager = SlideManager(slides: [], slideFactory: BaseSlideFactory(), shapeInfoFactory: ShapeInfoFactory())
     self.init(coder: coder, slideManager: slideManager)
   }
   

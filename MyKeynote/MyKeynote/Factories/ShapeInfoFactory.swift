@@ -17,9 +17,13 @@ struct ShapeInfo: Equatable {
   var inspector: ShapeInspector
 }
 
-class ShapeInfoFactory {
+protocol ShapeInfoFactoryProtocol {
+  func createShapeInfo(type: Shape.Type) -> ShapeInfo
+}
+
+class ShapeInfoFactory: ShapeInfoFactoryProtocol {
   
-  static func createShapeInfo(type: Shape.Type) -> ShapeInfo {
+  func createShapeInfo(type: Shape.Type) -> ShapeInfo {
     
     let shapeFactory = ShapeFactory()
     let inspectorFactory = InspectorFactory()

@@ -90,7 +90,7 @@ extension PresentingViewController: ComponentEventDelegate {
 }
 
 // MARK: - SlideDataSource
-extension PresentingViewController: SlideViewDatasource {
+extension PresentingViewController: ShapeViewStorableDatasource {
   
   func numberOfShapeView() -> Int {
     return currentShapes.count

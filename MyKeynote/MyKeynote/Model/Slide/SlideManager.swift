@@ -17,10 +17,12 @@ struct SlideManager: SlideManageable {
   
   private var slides: [BaseSlide]
   private var slideFactory: SlideFactoryProtocol
+  private var shapeFactory: ShapeInfoFactoryProtocol
   
-  init(slides: [BaseSlide], slideFactory: SlideFactoryProtocol) {
+  init(slides: [BaseSlide], slideFactory: SlideFactoryProtocol, shapeInfoFactory: ShapeInfoFactoryProtocol) {
     self.slides = slides
     self.slideFactory = slideFactory
+    self.shapeFactory = shapeInfoFactory
   }
   
   var numberOfSlides: Int {
@@ -28,7 +30,7 @@ struct SlideManager: SlideManageable {
   }
   
   mutating func createSlide<Slide>(of slideType: Slide.Type) where Slide : BaseSlide {
-    let slide = slideFactory.makeSlideWithSquare(slide: slideType.self)
+    let slide = slideFactory.makeSlide(slide: slideType.self, shapeFactory: shapeFactory)
     slides.append(slide)
   }
   

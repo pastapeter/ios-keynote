@@ -254,13 +254,13 @@
 		B1B0016A2A6538220028727E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B17227DC2A6FB3A3009A1FF9 /* NotificationCenterConstant.swift */,
 				B17ED61E2A6848A7002F932E /* BaseComponent.swift */,
 				B1B001772A66A0580028727E /* RandomStringGenerator.swift */,
 				B17ED6082A66E4BE002F932E /* KeynoteLogger.swift */,
 				B17ED6222A696404002F932E /* Shape */,
 				B17ED62D2A696E29002F932E /* Slide */,
 				B17ED6272A6964AB002F932E /* Properties */,
-				B17227DC2A6FB3A3009A1FF9 /* NotificationCenterConstant.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
