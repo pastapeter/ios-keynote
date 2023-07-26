@@ -27,10 +27,7 @@ class ColorSettingView: UIView, InspectViewable {
   }
   
   func setDelegate(with delegate: some ComponentInspectable) {
-    
-    guard let colorDelegate = delegate as? ColorSettable else { return }
-    
-    self.delegate = colorDelegate
+    self.delegate = delegate
   }
   
   required init?(coder: NSCoder) {

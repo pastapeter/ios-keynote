@@ -33,7 +33,6 @@ class AlphaSettingView: UIView, InspectViewable {
   }
   
   func setDelegate(with delegate: some ComponentInspectable) {
-    guard let delegate = delegate as? AlphaSettable else { return }
     self.delegate = delegate
   }
   
