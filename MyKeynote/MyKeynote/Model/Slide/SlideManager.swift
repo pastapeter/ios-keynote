@@ -30,7 +30,8 @@ struct SlideManager: SlideManageable {
   }
   
   mutating func createSlide<Slide>(of slideType: Slide.Type) where Slide : BaseSlide {
-    let slide = slideFactory.makeSlide(slide: slideType.self, shapeFactory: shapeFactory)
+    let slide = slideFactory.makeSlide(type: slideType.self)
+    slide.addShape(shapeFactory.createShapeInfo(type: Square.self, origin: (x: Int(slide.width / 2), y: Int(slide.height / 2))))
     slides.append(slide)
   }
   

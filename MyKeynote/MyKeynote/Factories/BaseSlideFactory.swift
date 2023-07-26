@@ -6,29 +6,23 @@
 //
 
 import Foundation
+import UIKit
 
 final class BaseSlideFactory: SlideFactoryProtocol {
   
+  private var maxWidth: Int
+  
+  init(maxWidth: Int) {
+    self.maxWidth = maxWidth
+  }
+  
   func makeSlide<Slide, G>(type: Slide.Type, using generator: inout G) -> Slide where Slide : BaseSlide, G : RandomNumberGenerator {
-    return type.init(id: keynoteUUID(), width: Int.random(in: 0..<Int.max, using: &generator), backgroundColor: KeynoteColor(R: 255, G: 255, B: 255, A: .ten))
+    return type.init(id: keynoteUUID(), width: maxWidth, backgroundColor: KeynoteColor(R: 255, G: 255, B: 255, A: .ten))
   }
   
   func makeSlide<Slide>(type: Slide.Type) -> Slide where Slide : BaseSlide {
-    var g = SystemRandomNumberGenerator()
-    return type.init(id: keynoteUUID(), width: Int.random(in: 0..<Int.max, using: &g), backgroundColor: KeynoteColor(R: 255, G: 255, B: 255, A: .ten))
+    return type.init(id: keynoteUUID(), width: maxWidth, backgroundColor: KeynoteColor(R: 255, G: 255, B: 255, A: .ten))
   }
-  
-  //바꿔줘야함
-  func makeSlide<Slide: BaseSlide>(slide: Slide.Type, shapeFactory: ShapeInfoFactoryProtocol) -> Slide {
-    var slideWithSquare = slide.init(id: keynoteUUID(), width: Int.random(in: 0..<Int.max), backgroundColor: KeynoteColor(R: 255, G: 255, B: 255, A: .ten))
-    slideWithSquare.addShape(shapeFactory.createShapeInfo(type: Square.self))
-    return slideWithSquare
-  }
-  
-}
-
-extension BaseSlideFactory {
-  
   
 }
 

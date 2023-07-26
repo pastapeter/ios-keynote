@@ -9,6 +9,10 @@ import UIKit
 
 class NavigatorViewController: UIViewController {
   
+  enum Constant {
+    static let slideMaxWidth = Int(UIScreen.main.bounds.width - 360)
+  }
+  
   private var slideManager: SlideManageable
   
   init(slideManager: SlideManageable) {
@@ -17,7 +21,7 @@ class NavigatorViewController: UIViewController {
   }
   
   convenience init() {
-    var slideManager = SlideManager(slides: [], slideFactory: BaseSlideFactory(), shapeInfoFactory: ShapeInfoFactory())
+    var slideManager = SlideManager(slides: [], slideFactory: BaseSlideFactory(maxWidth: Constant.slideMaxWidth), shapeInfoFactory: ShapeInfoFactory())
     slideManager.createSlide(of:BaseSlide.self)
     self.init(slideManager: slideManager)
   }
@@ -28,7 +32,7 @@ class NavigatorViewController: UIViewController {
   }
   
   required convenience init?(coder: NSCoder) {
-    let slideManager = SlideManager(slides: [], slideFactory: BaseSlideFactory(), shapeInfoFactory: ShapeInfoFactory())
+    let slideManager = SlideManager(slides: [], slideFactory: BaseSlideFactory(maxWidth: Constant.slideMaxWidth), shapeInfoFactory: ShapeInfoFactory())
     self.init(coder: coder, slideManager: slideManager)
   }
   
