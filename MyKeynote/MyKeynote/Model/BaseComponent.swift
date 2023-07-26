@@ -39,10 +39,6 @@ class BaseComponent: WidthSettable, HeightSettable, Hashable, CustomStringConver
     self.height = height
   }
   
-  var alpha: Alpha {
-    return backgroundColor.A
-  }
-  
   func setWidth(to length: Int) {
     self.width = length
   }
@@ -50,10 +46,7 @@ class BaseComponent: WidthSettable, HeightSettable, Hashable, CustomStringConver
   func setHeight(to length: Int) {
     self.height = length
   }
-  
-  func setBackgroundAlpha(alpha: Alpha) {
-    self.backgroundColor = .init(R: self.backgroundColor.R, G: self.backgroundColor.G, B: self.backgroundColor.B, A: alpha)
-  }
+
   
   func setBackgroundColor(red: UInt8, blue: UInt8, green: UInt8, alpha: Alpha) {
     self.backgroundColor = KeynoteColor(R: UInt8(red), G: UInt8(green), B: UInt8(blue), A: alpha)

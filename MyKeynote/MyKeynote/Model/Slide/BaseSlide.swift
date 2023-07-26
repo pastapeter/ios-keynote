@@ -28,6 +28,10 @@ class BaseSlide: BaseComponent, ComponentInspectable, SlideInitable, ShapeStorab
     return .ratio4_3
   }
   
+  var alpha: Alpha {
+    return backgroundColor.A
+  }
+  
   private(set) var shapes: [ShapeInfo] = []
   
   override var height: Int {
@@ -38,6 +42,11 @@ class BaseSlide: BaseComponent, ComponentInspectable, SlideInitable, ShapeStorab
     super.init(id: id, width: width, backgroundColor: backgroundColor)
   }
   
+  func setBackgroundAlpha(alpha: Alpha) {
+    super.setBackgroundColor(red: self.backgroundColor.R, blue: self.backgroundColor.B, green: self.backgroundColor.G, alpha: alpha)
+    
+  }
+  
   override func setBackgroundColor(red: UInt8, blue: UInt8, green: UInt8) {
     super.setBackgroundColor(red: red, blue: blue, green: green)
     NotificationCenter.default.post(name: NotificationCenterConstant.didChangeBackgroundColor.name, object: self, userInfo: ["BackgroundColor": self.backgroundColor])
@@ -46,11 +55,6 @@ class BaseSlide: BaseComponent, ComponentInspectable, SlideInitable, ShapeStorab
   override func setWidth(to length: Int) {
     super.setWidth(to: length)
     NotificationCenter.default.post(name: NotificationCenterConstant.didChangeWidth.name, object: self)
-  }
-  
-  func setAlpha(to alpha: Alpha) {
-    super.setBackgroundAlpha(alpha: alpha)
-    NotificationCenter.default.post(name: NotificationCenterConstant.didChangeAlpha.name, object: self)
   }
   
 }

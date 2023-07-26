@@ -31,8 +31,8 @@ class Shape: BaseComponent, ShapeProtocol {
     NotificationCenter.default.post(name: NotificationCenterConstant.didChangeShapeComponent.name, object: nil, userInfo: ["Shape": self])
   }
   
-  override func setBackgroundAlpha(alpha: Alpha) {
-    super.setBackgroundAlpha(alpha: alpha)
+  func setBackgroundAlpha(alpha: Alpha) {
+    super.setBackgroundColor(red: self.backgroundColor.R, blue: self.backgroundColor.B, green: self.backgroundColor.G, alpha: alpha)
     NotificationCenter.default.post(name: NotificationCenterConstant.didChangeShapeComponent.name, object: nil, userInfo: ["Shape": self])
   }
   

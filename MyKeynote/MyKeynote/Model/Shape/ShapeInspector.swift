@@ -39,7 +39,7 @@ class ShapeInspector: ComponentInspectable {
   }
   
   var alpha: Alpha {
-    return shape.alpha
+    return shape.backgroundColor.A
   }
   
   init(shape: Shape) {
