@@ -19,14 +19,28 @@ class AlphaSettingView: UIView, InspectViewable {
   private lazy var alphaSettingStepper = setUpStepper()
   private lazy var contentStackView = setUpStackViewForAlpha()
   private weak var delegate: AlphaSettable?
+  private var value: Alpha {
+    didSet {
+      self.alphaTextField.text = "\(value.rawValue)"
+    }
+  }
   
-  override init(frame: CGRect) {
+  init(frame: CGRect, value: ValueType) {
+    self.value = value
     super.init(frame: frame)
     layout()
     setbackgroundColor()
   }
   
+  required init?(coder: NSCoder, value: ValueType) {
+    self.value = value
+    super.init(coder: coder)
+    layout()
+    setbackgroundColor()
+  }
+  
   required init?(coder: NSCoder) {
+    self.value = .ten
     super.init(coder: coder)
     layout()
     setbackgroundColor()
@@ -48,6 +62,7 @@ class AlphaSettingView: UIView, InspectViewable {
   @objc
   private func stepperAction(_ sender: UIStepper) {
     guard let newAlpha = Alpha(rawValue: Int(sender.value)) else { return }
+    self.alphaTextField.text = "\(newAlpha.rawValue)"
     delegate?.setBackgroundAlpha(alpha: newAlpha)
   }
   
@@ -87,6 +102,7 @@ extension AlphaSettingView {
     let stepper: UIStepper = .init()
     stepper.maximumValue = Double(Alpha.min().rawValue)
     stepper.maximumValue = Double(Alpha.max().rawValue)
+    stepper.value = Double(value.rawValue)
     stepper.translatesAutoresizingMaskIntoConstraints = false
     stepper.addTarget(self, action: #selector(stepperAction), for: .valueChanged)
     return stepper
@@ -95,6 +111,7 @@ extension AlphaSettingView {
   private func setupAlphaTextField() -> UITextField {
     let textField: UITextField = .init()
     textField.backgroundColor = .white
+    textField.text = "\(value.rawValue)"
     textField.translatesAutoresizingMaskIntoConstraints = false
     return textField
   }

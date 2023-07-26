@@ -35,7 +35,7 @@ class KeynoteColor: CustomStringConvertible {
     let red = UInt8.random(in: 0...255, using: &generator)
     let green = UInt8.random(in: 0...255, using: &generator)
     let blue = UInt8.random(in: 0...255, using: &generator)
-    let alpha = Alpha.random(using: &generator)
+    let alpha = Alpha.ten
     return KeynoteColor(R: red, G: green, B: blue, A: alpha)
   }
   
@@ -43,6 +43,11 @@ class KeynoteColor: CustomStringConvertible {
     var g = SystemRandomNumberGenerator()
     return random(using: &g)
   }
-  
-  
+
+}
+
+extension KeynoteColor {
+  func tohexString() -> String {
+    return [R,G,B].map { String(format: "%02lX", $0) }.reduce("#", +)
+  }
 }

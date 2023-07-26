@@ -16,9 +16,9 @@ final class InspectViewFactory: InspectViewFactoryProtocol {
   func createInspectViews<Inspector: ComponentInspectable>(with inspector: Inspector) -> [any InspectViewable] {
     
     if type(of: inspector) == ShapeInspector.self {
-      return [ColorSettingView(frame: .zero), AlphaSettingView(frame: .zero)]
+      return [ColorSettingView(frame: .zero, value: inspector.backgroundColor), AlphaSettingView(frame: .zero, value: inspector.alpha)]
     } else if type(of: inspector) == BaseSlide.self {
-      return [ColorSettingView(frame: .zero)]
+      return [ColorSettingView(frame: .zero, value: inspector.backgroundColor)]
     }
     return []
   }

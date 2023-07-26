@@ -8,6 +8,10 @@
 import Foundation
 
 protocol ComponentInspectable: ColorSettable, AlphaSettable, AnyObject {
+  
+  var backgroundColor: KeynoteColor { get }
+  var alpha: Alpha { get }
+  
 }
 
 class ShapeInspector: ComponentInspectable {
@@ -29,6 +33,14 @@ class ShapeInspector: ComponentInspectable {
   }
   
   private var shape: Shape
+
+  var backgroundColor: KeynoteColor {
+    return shape.backgroundColor
+  }
+  
+  var alpha: Alpha {
+    return shape.alpha
+  }
   
   init(shape: Shape) {
     self.shape = shape

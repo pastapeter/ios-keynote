@@ -9,7 +9,7 @@ import UIKit
 
 class ColorSettingView: UIView, InspectViewable {
   
-  typealias ValueType = String
+  typealias ValueType = KeynoteColor
   
   private var titleLabel: UILabel = {
     let label = UILabel()
@@ -19,8 +19,15 @@ class ColorSettingView: UIView, InspectViewable {
   
   private lazy var setButton = setupButton()
   private weak var delegate: ColorSettable?
+  private var value: KeynoteColor {
+    didSet {
+      self.setButton.setTitle(value.tohexString(), for: .normal)
+      self.setButton.configuration?.baseForegroundColor = UIColor(from: value)
+    }
+  }
   
-  override init(frame: CGRect) {
+  init(frame: CGRect, value: KeynoteColor) {
+    self.value = value
     super.init(frame: frame)
     layout()
     setbackgroundColor()
@@ -30,7 +37,15 @@ class ColorSettingView: UIView, InspectViewable {
     self.delegate = delegate
   }
   
+  required init?(coder: NSCoder, value: KeynoteColor) {
+    self.value = value
+    super.init(coder: coder)
+    layout()
+    setbackgroundColor()
+  }
+  
   required init?(coder: NSCoder) {
+    self.value = .random()
     super.init(coder: coder)
     layout()
     setbackgroundColor()
@@ -40,8 +55,8 @@ class ColorSettingView: UIView, InspectViewable {
     self.titleLabel.text = title
   }
   
-  func setValue(with value: String, mininum: String?, maximum: String?) {
-    self.setButton.setTitle(value, for: .normal)
+  func setValue(with value: KeynoteColor, mininum: KeynoteColor?, maximum: KeynoteColor?) {
+    self.setButton.setTitle(value.tohexString(), for: .normal)
   }
   
 }
@@ -62,9 +77,9 @@ extension ColorSettingView {
   
   private func setupButton() -> UIButton {
     var config = UIButton.Configuration.filled()
-    config.baseBackgroundColor = .yellow
-    config.title = "0xFFCCOO"
-    config.baseForegroundColor = .black
+    config.baseBackgroundColor = .white
+    config.title = value.tohexString()
+    config.baseForegroundColor = UIColor(from: value)
     let button = UIButton(configuration: config)
     button.addTarget(self, action: #selector(didTouchColorChange), for: .touchUpInside)
     return button
@@ -79,7 +94,6 @@ extension ColorSettingView {
     addSubview(setButton)
     addSubview(titleLabel)
     
-
   }
   
 }
@@ -88,6 +102,8 @@ extension ColorSettingView: UIColorPickerViewControllerDelegate {
   
   func colorPickerViewController(_ viewController: UIColorPickerViewController, didSelect color: UIColor, continuously: Bool) {
     guard let keynoteColor = color.toKeynoteColor() else { return }
+    self.setButton.setTitle(color.hexString, for: .normal)
+    self.setButton.configuration?.baseForegroundColor = color
     self.delegate?.setBackgroundColor(red: keynoteColor.R, blue: keynoteColor.B, green: keynoteColor.G)
   }
   
@@ -96,6 +112,6 @@ extension ColorSettingView: UIColorPickerViewControllerDelegate {
 fileprivate extension UIColor {
   func toKeynoteColor() -> KeynoteColor? {
     guard let rgb = self.cgColor.components else { return nil }
-    return KeynoteColor(R: UInt8(ceil(rgb[0] * 255)), G: UInt8(ceil(rgb[0] * 255)), B: UInt8(ceil(rgb[0] * 255)))
+    return KeynoteColor(R: UInt8(rgb[0] * 255), G: UInt8(rgb[1] * 255), B: UInt8(rgb[2] * 255))
   }
 }

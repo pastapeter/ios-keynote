@@ -39,6 +39,10 @@ class BaseComponent: ComponentInspectable, WidthSettable, HeightSettable, Hashab
     self.height = height
   }
   
+  var alpha: Alpha {
+    return backgroundColor.A
+  }
+  
   func setWidth(to length: Int) {
     self.width = length
   }
