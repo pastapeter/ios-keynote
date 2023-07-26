@@ -56,8 +56,7 @@ extension SlideView {
   
   func makeShapeView(with shape: Shape) -> ShapeView {
     let shapeView = ShapeView(frame: CGRect(x: Int(shape.origin.x), y: Int(shape.origin.y), width: shape.width, height: shape.height), uuid: shape.id)
-//    shapeView.backgroundColor = UIColor(from: shape.backgroundColor)
-    shapeView.backgroundColor = .red
+    shapeView.backgroundColor = UIColor(from: shape.backgroundColor)
     shapeView.delegate = self
     shapeviews.updateValue(shapeView, forKey: shape.id)
     return shapeView

@@ -10,7 +10,7 @@ import UIKit
 extension UIColor {
   
   convenience init?(from keynoteColor: KeynoteColor) {
-    self.init(red: CGFloat(keynoteColor.R) / 255, green: CGFloat(keynoteColor.G) / 255, blue: CGFloat(keynoteColor.B) / 255, alpha: Double(keynoteColor.A.rawValue / 100))
+    self.init(red: CGFloat(keynoteColor.R) / 255, green: CGFloat(keynoteColor.G) / 255, blue: CGFloat(keynoteColor.B) / 255, alpha: Double(keynoteColor.A.rawValue) / 10)
   }
   
   var hexString: String {
