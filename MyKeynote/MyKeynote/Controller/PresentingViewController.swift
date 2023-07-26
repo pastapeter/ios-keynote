@@ -17,9 +17,11 @@ class PresentingViewController: UIViewController {
   var currentShapes: [Shape] = []
   weak var outputDelegate: PresentingOutputDelegate?
   
-  private var slideView: SlideView = {
+  private lazy var slideView: SlideView = {
     let view = SlideView(frame: .zero)
     view.translatesAutoresizingMaskIntoConstraints = false
+    view.delegate = self
+    view.datasource = self
     return view
   }()
   
@@ -27,13 +29,12 @@ class PresentingViewController: UIViewController {
     super.viewDidLoad()
     self.view.backgroundColor = .systemGray2
     setupSlideView()
-    addObservers()
-    slideView.delegate = self
-    slideView.datasource = self
+    addObservers()    
   }
+
   
   private func addObservers() {
-    NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNotification), name: NotificationCenterConstant.Slide.name, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNotification), name: NotificationCenterConstant.Shape.name, object: nil)
   }
   
   @objc
@@ -41,8 +42,8 @@ class PresentingViewController: UIViewController {
     if notification.name == NotificationCenterConstant.SlideChange.name {
       reloadData()
     } else if notification.name == NotificationCenterConstant.Shape.name {
-      guard let uuid = notification.userInfo?["UUID"] as? keynoteUUID, let shape = notification.userInfo?["Shape"] as? Shape else { return }
-      slideView(slideView, editByUUID: uuid, shape: shape)
+      guard let shape = notification.userInfo?["Shape"] as? Shape else { return }
+      slideView(slideView, editByUUID: shape.id, shape: shape)
     }
     
   }
