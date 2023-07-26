@@ -8,16 +8,16 @@
 import Foundation
 
 protocol Squarable: Shape {
-  init(id: keynoteUUID, width: Int, backgroundColor: KeynoteColor, origin: (x: Double, y: Double))
+  init(id: keynoteUUID, width: Int, backgroundColor: KeynoteColor, origin: (x: Int, y: Int))
 }
 
 class Square: Shape, Squarable {
   
-  required init(id: keynoteUUID, width: Int, backgroundColor: KeynoteColor, origin: (x: Double, y: Double)) {
+  required init(id: keynoteUUID, width: Int, backgroundColor: KeynoteColor, origin: (x: Int, y: Int)) {
     super.init(id: id, width: width, height: width, backgroundColor: backgroundColor, origin: origin)
   }
   
-  required init(id: keynoteUUID, width: Int, height: Int, backgroundColor: KeynoteColor, origin: (x: Double, y: Double)) {
+  required init(id: keynoteUUID, width: Int, height: Int, backgroundColor: KeynoteColor, origin: (x: Int, y: Int)) {
     
     var selectedLength = 0
     if width > height {

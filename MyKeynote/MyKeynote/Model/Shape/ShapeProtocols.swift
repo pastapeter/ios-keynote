@@ -8,11 +8,11 @@
 import Foundation
 
 protocol ShapeInitable {
-  init(id: keynoteUUID, width: Int, height: Int, backgroundColor: KeynoteColor, origin: (x: Double, y: Double))
+  init(id: keynoteUUID, width: Int, height: Int, backgroundColor: KeynoteColor, origin: (x: Int, y: Int))
 }
 
 protocol Movable {
-  func move(x: Double, y: Double)
+  func move(x: Int, y: Int)
 }
 
 protocol ShapeProtocol: ShapeInitable, Movable { }

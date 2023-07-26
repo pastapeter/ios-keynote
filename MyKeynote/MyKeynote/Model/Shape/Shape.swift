@@ -9,14 +9,14 @@ import Foundation
 
 class Shape: BaseComponent, ShapeProtocol {
 
-  private(set) var origin: (x: Double, y: Double) = (x:0, y:0)
+  private(set) var origin: (x: Int, y: Int) = (x:0, y:0)
   
-  required init(id: keynoteUUID, width: Int, height: Int, backgroundColor: KeynoteColor, origin: (x: Double, y: Double)) {
+  required init(id: keynoteUUID, width: Int, height: Int, backgroundColor: KeynoteColor, origin: (x: Int, y: Int)) {
     self.origin = origin
     super.init(id: id, width: width, height: height, backgroundColor: backgroundColor)
   }
   
-  func move(x: Double, y: Double) {
+  func move(x: Int, y: Int) {
     self.origin = (x, y)
     NotificationCenter.default.post(name: NotificationCenterConstant.Shape.name, object: nil, userInfo: ["Shape": self])
   }
