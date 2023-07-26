@@ -7,18 +7,7 @@
 
 import UIKit
 
-protocol NavigatorViewDataSource: AnyObject {
-  
-}
-
-protocol NavigatorViewDelegate: AnyObject {
-  
-}
-
 class NavigatorView: UIView {
-
-  weak var delegate: NavigatorViewDelegate?
-  weak var datasource: NavigatorViewDataSource?
   
   override init(frame: CGRect) {
     super.init(frame: frame)
