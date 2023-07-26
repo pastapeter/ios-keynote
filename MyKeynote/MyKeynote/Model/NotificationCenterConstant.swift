@@ -9,8 +9,10 @@ import Foundation
 
 enum NotificationCenterConstant: String {
 
-  case Slide
-  case Shape
+  case didChangeBackgroundColor
+  case didChangeWidth
+  case didChangeAlpha
+  case didChangeShapeComponent
   case SlideChange
   
   var name: NSNotification.Name {

@@ -34,18 +34,28 @@ class PresentingViewController: UIViewController {
 
   
   private func addObservers() {
-    NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNotification), name: NotificationCenterConstant.Shape.name, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNotification), name: NotificationCenterConstant.didChangeShapeComponent.name, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNotification), name: NotificationCenterConstant.didChangeBackgroundColor.name, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNotification), name: NotificationCenterConstant.didChangeWidth.name, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(didReceiveNotification), name: NotificationCenterConstant.didChangeAlpha.name, object: nil)
   }
   
   @objc
   func didReceiveNotification(_ notification: Notification) {
     if notification.name == NotificationCenterConstant.SlideChange.name {
       reloadData()
-    } else if notification.name == NotificationCenterConstant.Shape.name {
+    }
+    else if notification.name == NotificationCenterConstant.didChangeShapeComponent.name {
       guard let shape = notification.userInfo?["Shape"] as? Shape else { return }
       slideView(slideView, editByUUID: shape.id, shape: shape)
     }
-    
+    else if notification.name == NotificationCenterConstant.didChangeBackgroundColor.name {
+      
+      guard let backgroundColor = notification.userInfo?["BackgroundColor"] as? KeynoteColor else { return }
+      
+      slideView.reloadBackgroundColor(with: backgroundColor)
+    }
+  
   }
   
   func reloadData() {

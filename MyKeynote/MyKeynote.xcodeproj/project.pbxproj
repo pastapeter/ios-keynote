@@ -29,7 +29,7 @@
 		B17ED6192A67C475002F932E /* PresentingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17ED6182A67C475002F932E /* PresentingViewController.swift */; };
 		B17ED61D2A6840CE002F932E /* statusBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17ED61C2A6840CE002F932E /* statusBarView.swift */; };
 		B17ED61F2A6848A7002F932E /* BaseComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17ED61E2A6848A7002F932E /* BaseComponent.swift */; };
-		B17ED6212A68F2F1002F932E /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17ED6202A68F2F1002F932E /* Shape.swift */; };
+		B17ED6212A68F2F1002F932E /* didChangeShapeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17ED6202A68F2F1002F932E /* didChangeShapeComponent.swift */; };
 		B17ED6242A69640D002F932E /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17ED6232A69640D002F932E /* Square.swift */; };
 		B17ED6262A696457002F932E /* ShapeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17ED6252A696457002F932E /* ShapeProtocols.swift */; };
 		B17ED62A2A6965B9002F932E /* ShapeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17ED6292A6965B9002F932E /* ShapeFactory.swift */; };
@@ -92,7 +92,7 @@
 		B17ED6182A67C475002F932E /* PresentingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentingViewController.swift; sourceTree = "<group>"; };
 		B17ED61C2A6840CE002F932E /* statusBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = statusBarView.swift; sourceTree = "<group>"; };
 		B17ED61E2A6848A7002F932E /* BaseComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseComponent.swift; sourceTree = "<group>"; };
-		B17ED6202A68F2F1002F932E /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		B17ED6202A68F2F1002F932E /* didChangeShapeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = didChangeShapeComponent.swift; sourceTree = "<group>"; };
 		B17ED6232A69640D002F932E /* Square.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
 		B17ED6252A696457002F932E /* ShapeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeProtocols.swift; sourceTree = "<group>"; };
 		B17ED6292A6965B9002F932E /* ShapeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeFactory.swift; sourceTree = "<group>"; };
@@ -159,7 +159,7 @@
 		B17ED6222A696404002F932E /* Shape */ = {
 			isa = PBXGroup;
 			children = (
-				B17ED6202A68F2F1002F932E /* Shape.swift */,
+				B17ED6202A68F2F1002F932E /* didChangeShapeComponent.swift */,
 				B17ED6232A69640D002F932E /* Square.swift */,
 				B17ED6252A696457002F932E /* ShapeProtocols.swift */,
 				B17227C62A6E07DE009A1FF9 /* ShapeInspector.swift */,
@@ -428,7 +428,7 @@
 				B1B001702A6567BC0028727E /* KeynoteColor.swift in Sources */,
 				B17227C72A6E07DE009A1FF9 /* ShapeInspector.swift in Sources */,
 				B17ED6132A67BCD1002F932E /* NavigatorViewController.swift in Sources */,
-				B17ED6212A68F2F1002F932E /* Shape.swift in Sources */,
+				B17ED6212A68F2F1002F932E /* didChangeShapeComponent.swift in Sources */,
 				B17227C92A6E0BDD009A1FF9 /* ShapeInfoFactory.swift in Sources */,
 				B1B001762A669FE00028727E /* keynoteUUID.swift in Sources */,
 				B1B001722A6567EB0028727E /* Alpha.swift in Sources */,

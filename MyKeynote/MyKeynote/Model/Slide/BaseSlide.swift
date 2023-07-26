@@ -22,7 +22,7 @@ enum AspectRatio {
 }
 
 
-class BaseSlide: BaseComponent, SlideInitable, ShapeStorable {
+class BaseSlide: BaseComponent, ComponentInspectable, SlideInitable, ShapeStorable {
   
   var aspectRatio: AspectRatio {
     return .ratio4_3
@@ -38,19 +38,19 @@ class BaseSlide: BaseComponent, SlideInitable, ShapeStorable {
     super.init(id: id, width: width, backgroundColor: backgroundColor)
   }
   
-  override func setBackgroundColor(red: UInt8, blue: UInt8, green: UInt8, alpha: Alpha) {
-    super.setBackgroundColor(red: red, blue: blue, green: green, alpha: alpha)
-    NotificationCenter.default.post(name: NotificationCenterConstant.Slide.name, object: nil)
+  override func setBackgroundColor(red: UInt8, blue: UInt8, green: UInt8) {
+    super.setBackgroundColor(red: red, blue: blue, green: green)
+    NotificationCenter.default.post(name: NotificationCenterConstant.didChangeBackgroundColor.name, object: self, userInfo: ["BackgroundColor": self.backgroundColor])
   }
   
   override func setWidth(to length: Int) {
     super.setWidth(to: length)
-    NotificationCenter.default.post(name: NotificationCenterConstant.Slide.name, object: nil)
+    NotificationCenter.default.post(name: NotificationCenterConstant.didChangeWidth.name, object: self)
   }
   
   func setAlpha(to alpha: Alpha) {
     super.setBackgroundAlpha(alpha: alpha)
-    NotificationCenter.default.post(name: NotificationCenterConstant.Slide.name, object: nil)
+    NotificationCenter.default.post(name: NotificationCenterConstant.didChangeAlpha.name, object: self)
   }
   
 }
@@ -63,31 +63,31 @@ extension BaseSlide {
   
   func addShape(_ shape: ShapeInfo) {
     self.shapes.append(shape)
-    NotificationCenter.default.post(name: NotificationCenterConstant.Slide.name, object: nil)
+    NotificationCenter.default.post(name: NotificationCenterConstant.SlideChange.name, object: nil)
   }
   
   func insertShape(_ shape: ShapeInfo, at index: Int) {
     self.shapes.insert(shape, at: index)
-    NotificationCenter.default.post(name: NotificationCenterConstant.Slide.name, object: nil)
+    NotificationCenter.default.post(name: NotificationCenterConstant.SlideChange.name, object: nil)
   }
   
   func brintShapeToFront(_ shape: ShapeInfo) {
     guard let index = self.shapes.firstIndex(of: shape) else { return }
     let shape = self.shapes.remove(at: index)
     self.shapes.insert(shape, at: 0)
-    NotificationCenter.default.post(name: NotificationCenterConstant.Slide.name, object: nil)
+    NotificationCenter.default.post(name: NotificationCenterConstant.SlideChange.name, object: nil)
   }
   
   func sendShapeToBack(_ shape: ShapeInfo) {
     guard let index = self.shapes.firstIndex(of: shape) else { return }
     self.shapes.append(self.shapes.remove(at: index))
-    NotificationCenter.default.post(name: NotificationCenterConstant.Slide.name, object: nil)
+    NotificationCenter.default.post(name: NotificationCenterConstant.SlideChange.name, object: nil)
   }
   
   func removeShape(_ shape: ShapeInfo) {
     guard let index = self.shapes.firstIndex(of: shape) else { return }
     self.shapes.remove(at: index)
-    NotificationCenter.default.post(name: NotificationCenterConstant.Slide.name, object: nil)
+    NotificationCenter.default.post(name: NotificationCenterConstant.SlideChange.name, object: nil)
   }
   
   

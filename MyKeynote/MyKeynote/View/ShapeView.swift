@@ -52,7 +52,7 @@ class ShapeView: UIView, ViewSelectable, ViewMovable {
   func updateview(by shape: Shape) {
     // Shape -> 위에서 바꿔라
     self.backgroundColor = UIColor(from: shape.backgroundColor)
-    self.frame.origin = CGPoint(x: shape.origin.x, y: shape.origin.y)
+    self.frame.origin = CGPoint(x: Int(shape.origin.x) - (shape.width / 2), y: Int(shape.origin.y) - (shape.height / 2))
     self.frame = CGRect(origin: self.frame.origin, size: CGSize(width: shape.width, height: shape.height))
   }
   
@@ -62,11 +62,19 @@ class ShapeView: UIView, ViewSelectable, ViewMovable {
   
   func didTouched() {
     delegate?.didTouch(with: self.uuid)
-    toggleSelect()
+    select()
   }
   
-  func toggleSelect() {
-    isSelected = !isSelected
+  func deselect() {
+    if isSelected == true {
+      isSelected = false
+    }
+  }
+  
+  func select() {
+    if isSelected == false {
+        isSelected = true
+    }
   }
   
 }

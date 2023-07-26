@@ -33,6 +33,10 @@ final class SlideView: UIView, ComponentEventDelegate {
       self.addSubview(shapeView)
     }
   }
+  
+  func reloadBackgroundColor(with color: KeynoteColor) {
+    self.backgroundColor = UIColor(from: color)
+  }
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -69,7 +73,7 @@ extension SlideView {
   
   @objc
   private func handleTapOnSlide(sender: UITapGestureRecognizer) {
-    shapeviews.values.forEach { $0.toggleSelect() }
+    shapeviews.values.forEach { $0.deselect() }
     delegate?.didTouchSlide()
   }
   
