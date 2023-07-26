@@ -28,13 +28,17 @@ struct SlideManager: SlideManageable {
   }
   
   mutating func createSlide<Slide>(of slideType: Slide.Type) where Slide : BaseSlide {
-//    let slide = slideFactory.makeSlide(type: slideType.self)
     let slide = slideFactory.makeSlideWithSquare(slide: slideType.self)
     slides.append(slide)
   }
   
   subscript(index: Int) -> BaseSlide? {
     if index >= numberOfSlides { return nil }
+    postCurrentSlideToObservers(slide: slides[index])
     return slides[index]
+  }
+  
+  private func postCurrentSlideToObservers(slide: BaseSlide) {
+    NotificationCenter.default.post(name: NotificationCenterConstant.SlideChange.name, object: nil, userInfo: ["CurrentSlide" : slide])
   }
 }

@@ -9,49 +9,66 @@ import UIKit
 
 final class KeynoteContainerViewController: KeynoteSplitViewController {
   
+  private var currentSlide: BaseSlide? {
+    didSet {
+      parseCurrentSlideToInspectorViewController()
+      parseShapesInCurrentSlideToPresentingViewController()
+    }
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    setNavigatorDatasource()
-    parseNavigatorDatasource()
-    parseDatasourceToInspecterViewcontroller()
+    parseShapesInCurrentSlideToPresentingViewController()
+    parseCurrentSlideToInspectorViewController()
+    addObserverForSlideChange()
   }
   
-  weak var navigateDatasource: NavigatorDataSource?
-  
-  func setNavigatorDatasource() {
-    guard let navigatorVC = viewControllers[.left] as? NavigatorViewController else { return }
-    self.navigateDatasource = navigatorVC
-  }
-  
-  func parseNavigatorDatasource() {
-    guard let presentingVC = viewControllers[.middle] as? PresentingViewController else { return }
-    presentingVC.navigateDatasource = navigateDatasource
-    presentingVC.outputDelegate = self
-    presentingVC.reloadData()
-  }
-  
-  func parseDatasourceToInspecterViewcontroller() {
-    guard let inspectorVC = viewControllers[.right] as? InspectorViewController else { return }
-    guard let selectedSlide = self.navigateDatasource?.selectedSlideInfo() else { return }
-    inspectorVC.reloadInspector(with: selectedSlide)
-  }
-
 }
 
 extension KeynoteContainerViewController: PresentingOutputDelegate {
   
   func output(didSelectFromSlideView uuid: keynoteUUID) {
-    
-    guard let selectedInspector = self.navigateDatasource?.selectedSlideInfo()?.find(uuid)?.inspector else { return }
-    guard let inspectorVC = viewControllers[.right] as? InspectorViewController else { return }
-    inspectorVC.reloadInspector(with: selectedInspector)
-    
+    parseInspectorOfSelectedShapeInCurrentSlide(by: uuid)
   }
   
   func didTouchOnSlideView() {
+    parseCurrentSlideToInspectorViewController()
+  }
+  
+}
+
+// MARK: - Private methods
+
+extension KeynoteContainerViewController {
+  
+  private func addObserverForSlideChange() {
+    NotificationCenter.default.addObserver(self, selector: #selector(didReceiveSlideChange), name: NotificationCenterConstant.SlideChange.name, object: nil)
+  }
+  
+  @objc
+  private func didReceiveSlideChange(_ sender: Notification) {
+    guard let slide = sender.userInfo?["CurrentSlide"] as? BaseSlide else { return }
+    currentSlide = slide
+  }
+
+  
+  private func parseShapesInCurrentSlideToPresentingViewController() {
+    guard let presentingVC = viewControllers[.middle] as? PresentingViewController else { return }
+    presentingVC.currentShapes = currentSlide?.shapes.map { $0.shape } ?? []
+    presentingVC.outputDelegate = self
+    presentingVC.reloadData()
+  }
+  
+  private func parseCurrentSlideToInspectorViewController() {
     guard let inspectorVC = viewControllers[.right] as? InspectorViewController else { return }
-    guard let selectedSlide = self.navigateDatasource?.selectedSlideInfo() else { return }
-    inspectorVC.reloadInspector(with: selectedSlide) //TYPE: BaseSlide
+    guard let currentSlide = currentSlide else { return }
+    inspectorVC.reloadInspector(with: currentSlide)
+  }
+  
+  private func parseInspectorOfSelectedShapeInCurrentSlide(by uuid: keynoteUUID) {
+    guard let currentInspector = currentSlide?.find(uuid)?.inspector else { return }
+    guard let inspectorVC = viewControllers[.right] as? InspectorViewController else { return }
+    inspectorVC.reloadInspector(with: currentInspector)
   }
   
 }
