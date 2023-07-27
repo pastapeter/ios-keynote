@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SlideUUID: Hashable, CustomStringConvertible {
+struct keynoteUUID: Hashable, CustomStringConvertible {
   
   private static func random<G: RandomStringGenerator>(using generator: inout G, length: Int) -> String {
     var result = ""
@@ -21,7 +21,7 @@ struct SlideUUID: Hashable, CustomStringConvertible {
   
   init(randomGenerator: RandomStringGenerator = StringRandomGenerator(), length: Int = 9) {
     var randomGenerator = randomGenerator
-    var result = SlideUUID.random(using: &randomGenerator, length: length)
+    var result = keynoteUUID.random(using: &randomGenerator, length: length)
     result.insert("-", at: result.index(result.startIndex, offsetBy: 3))
     result.insert("-", at: result.index(result.endIndex, offsetBy: -3))
     wrappedValue = result

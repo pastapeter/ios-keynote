@@ -27,4 +27,12 @@ enum Alpha: Int, CaseIterable {
     var g = SystemRandomNumberGenerator()
     return Alpha.random(using: &g)
   }
+  
+  static func max() -> Alpha {
+    return .ten
+  }
+  
+  static func min() -> Alpha {
+    return .one
+  }
 }
